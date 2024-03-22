@@ -1,0 +1,6 @@
+requests[socks]>=2.21.0         # Python HTTP for humans with proxy support
+flake8==3.8.4                   # PEP checking
+wheel>=0.34.2                   # Building package
+coverage>=6.4.1                 # Run tests, measure coverage
+coveralls>=3.3.1
+Pillow>=9.1.1
