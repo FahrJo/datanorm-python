@@ -1,4 +1,4 @@
-# Handle DATANORM 4 files with Python
+## Handling DATANORM 4 files with Python
 
 This library contains a collection of classes to parse DATANORM files in Python. The library follows
 [this informal specification](https://docplayer.org/115761786-Technische-spezifikationen-der-datanorm-dateien-in-haufe-lexware.html)
