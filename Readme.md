@@ -1,3 +1,7 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Build Status](https://github.com/FahrJo/datanorm-python/actions/workflows/ci.yml/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/FahrJo/datanorm-python/badge.svg?branch=main)](https://coveralls.io/github/FahrJo/datanorm-python?branch=main)
+
 ## Handling DATANORM 4 files with Python
 
 This library contains a collection of classes to parse DATANORM files in Python. The library follows
