@@ -85,35 +85,35 @@ class DatanormItem:
         """Generates a description, based on the "Textkennzeichen" in the \
             DATANORM file.
         """
-        ti = self.text_indicator
-        if ti == "00":
-            description = f"{self.short_text_1}\n{self.short_text_2}"
-        elif ti == "01":
-            description = f"{self.short_text_1}"
-        elif ti == "10":
-            description = f"{self.longtext}\n{self.short_text_2}"
-        elif ti == "20":
-            description = f"{self.short_text_1}\n{self.dimensions_text}"
-        elif ti == "30":
-            description = f"{self.longtext}\n{self.dimensions_text}"
-        elif ti == "40":
-            description = f"{self.short_text_1}\n{self.short_text_2}\n{self.longtext}"
-        elif ti == "41":
-            description = f"{self.short_text_1}\n{self.longtext}"
-        elif ti == "50":
-            description = (
-                f"{self.short_text_1}\n{self.short_text_2}\n{self.dimensions_text}"
-            )
-        elif ti == "51":
-            description = f"{self.short_text_1}\n{self.dimensions_text}"
-        elif ti == "60":
-            description = f"{self.short_text_1}\n{self.short_text_2}\n{self.longtext}\n{self.dimensions_text}"  # noqa: E501
-        elif ti == "61":
-            description = (
-                f"{self.short_text_1}\n{self.longtext}\n{self.dimensions_text}"
-            )
-        else:
-            description = f"{self.short_text_1}\n{self.short_text_2}"
+        match self.text_indicator:
+            case "00":
+                description = f"{self.short_text_1}\n{self.short_text_2}"
+            case "01":
+                description = f"{self.short_text_1}"
+            case "10":
+                description = f"{self.longtext}\n{self.short_text_2}"
+            case "20":
+                description = f"{self.short_text_1}\n{self.dimensions_text}"
+            case "30":
+                description = f"{self.longtext}\n{self.dimensions_text}"
+            case "40":
+                description = f"{self.short_text_1}\n{self.short_text_2}\n{self.longtext}"  # noqa: E501
+            case "41":
+                description = f"{self.short_text_1}\n{self.longtext}"
+            case "50":
+                description = (
+                    f"{self.short_text_1}\n{self.short_text_2}\n{self.dimensions_text}"
+                )
+            case "51":
+                description = f"{self.short_text_1}\n{self.dimensions_text}"
+            case "60":
+                description = f"{self.short_text_1}\n{self.short_text_2}\n{self.longtext}\n{self.dimensions_text}"  # noqa: E501
+            case "61":
+                description = (
+                    f"{self.short_text_1}\n{self.longtext}\n{self.dimensions_text}"
+                )
+            case _:
+                description = f"{self.short_text_1}\n{self.short_text_2}"
         return description
 
     @property
