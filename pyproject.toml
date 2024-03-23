@@ -6,12 +6,12 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "inventree-datanorm-import"
-version = "0.0.2"
+name = "datanorm"
+version = "0.0.1"
 authors = [
   { name="Johannes Fahr", email="johannes.fahr@posteo.de" },
 ]
-description = "A Collection of parser classes to handle DATANORM files"
+description = "Handling DATANORM 4 files with Python"
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [
@@ -20,13 +20,9 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
-#[project.urls]
-#Homepage = "https://github.com/FahrJo/datanorm"
-#Issues = "https://github.com/FahrJo/datanorm/issues"
-
-[project.entry-points."inventree_plugins"]
-inventree-datanorm-import = "inventree_datanorm_import.datanorm_barcode_plugin:DatanormBarcodePlugin"
+[project.urls]
+Homepage = "https://github.com/FahrJo/datanorm"
+Issues = "https://github.com/FahrJo/datanorm/issues"
 
 [tool.setuptools.packages.find]
-where = ["src"]
-exclude = ["DATANORM_files*"]
+exclude = ["tests*"]
