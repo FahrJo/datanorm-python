@@ -1,4 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PyPI](https://img.shields.io/pypi/v/datanorm)](https://pypi.org/project/datanorm/)
 ![Build Status](https://github.com/FahrJo/datanorm-python/actions/workflows/ci.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/FahrJo/datanorm-python/badge.svg?branch=main)](https://coveralls.io/github/FahrJo/datanorm-python?branch=main)
 
