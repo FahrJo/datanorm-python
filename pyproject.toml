@@ -19,10 +19,15 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+dependencies = [
+    "requests"
+]
+#dynamic = ["version"]
+#[tool.setuptools_scm]
 
 [project.urls]
 Homepage = "https://github.com/FahrJo/datanorm"
 Issues = "https://github.com/FahrJo/datanorm/issues"
 
-[tool.setuptools.packages.find]
-exclude = ["tests*"]
+[tool.setuptools]
+packages = ["datanorm"]
