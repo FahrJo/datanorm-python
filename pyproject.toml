@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "datanorm"
-version = "0.0.1"
+version = "0.0.1-alpha"
 authors = [
   { name="Johannes Fahr", email="johannes.fahr@posteo.de" },
 ]
