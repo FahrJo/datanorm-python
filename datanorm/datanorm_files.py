@@ -3,6 +3,8 @@ DATANORM File Wrappers
 ----------------------
 The DatanormItem is updated by each file wrapper regarding to existing information in
 the DatanormItem.
+
+REFERENCE for technical details: https://docplayer.org/115761786-Technische-spezifikationen-der-datanorm-dateien-in-haufe-lexware.html  # noqa: E501
 """
 
 from abc import ABC

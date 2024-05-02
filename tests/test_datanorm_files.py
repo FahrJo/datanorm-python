@@ -191,9 +191,7 @@ class TestDatanormProductGroupFile(unittest.TestCase):
             "S": "S;;01;Installationsgeräte & -systeme;;;",
             "S_2": "S;;01;;12;Sicherungsautomaten & Hauptschalter;",
         }
-        self.assertEqual(
-            dut._search_file_for_group_ids("01", "12"), expected_result
-        )
+        self.assertEqual(dut._search_file_for_group_ids("01", "12"), expected_result)
         self.assertIsNone(dut._search_file_for_group_ids("04", "12"))
 
     def test__search_file_for_id_nonexisting_file(self):
@@ -319,12 +317,10 @@ class TestDatanormProductGroupFile(unittest.TestCase):
         self.assertIsNone(di.product_group_name)
 
     def test_file_name_is_valid(self):
-        self.assertTrue(DatanormProductGroupFile(
-            self.DATANORM_WRG_PATH).file_name_is_valid()
+        self.assertTrue(
+            DatanormProductGroupFile(self.DATANORM_WRG_PATH).file_name_is_valid()
         )
-        self.assertFalse(DatanormProductGroupFile(
-            "Test.123").file_name_is_valid()
-        )
+        self.assertFalse(DatanormProductGroupFile("Test.123").file_name_is_valid())
 
 
 class TestDatanormPriceFile(unittest.TestCase):

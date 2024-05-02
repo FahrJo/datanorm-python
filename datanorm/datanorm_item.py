@@ -1,13 +1,12 @@
 """
 A class that contains informations of a single DATANORM article
+
+REFERENCE for technical details: https://docplayer.org/115761786-Technische-spezifikationen-der-datanorm-dateien-in-haufe-lexware.html  # noqa: E501
 """
+
 import datetime
 from decimal import Decimal
 import re
-
-"""
-Source for technical details: https://docplayer.org/115761786-Technische-spezifikationen-der-datanorm-dateien-in-haufe-lexware.html  # noqa: E501
-"""
 
 
 class DatanormItem:
