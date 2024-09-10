@@ -54,8 +54,9 @@ class DatanormFile(ABC):
         Returns:
             bool: True if the file name is compliant
         """
-        prefix = re.search(self._regex_filename_prefix, self.datanorm_file.upper())
-        suffix = re.search(self._regex_filename_suffix, self.datanorm_file.upper())
+        upper_basename = os.path.basename(self.datanorm_file).upper()
+        prefix = re.search(self._regex_filename_prefix, upper_basename)
+        suffix = re.search(self._regex_filename_suffix, upper_basename)
         return prefix is not None and suffix is not None
 
     def parse(self, di: DatanormItem):

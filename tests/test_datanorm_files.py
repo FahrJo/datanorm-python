@@ -68,10 +68,17 @@ class TestDatanormBaseFile(unittest.TestCase):
     def setUp(self):
         this_package = import_module(".", package="tests")
         self.DATANORM_PATH = str(files(this_package).joinpath("datanorm_test.001"))
-
         return super().setUp()
 
-    def test__search_file_for_id(self):
+    def test_file_name_is_valid_abs_path(self):
+        dut = DatanormBaseFile(self.DATANORM_PATH)
+        self.assertTrue(dut.file_name_is_valid())
+
+    def test_file_name_is_valid_rel_path(self):
+        dut = DatanormBaseFile('./data/Datanorm/DATANORM.001')
+        self.assertTrue(dut.file_name_is_valid())
+
+    def test_search_file_for_id(self):
         dut = DatanormBaseFile(self.DATANORM_PATH)
 
         expected_result = {
@@ -83,11 +90,11 @@ class TestDatanormBaseFile(unittest.TestCase):
 
         self.assertIsNone(dut._search_file_for_id(BAD_EAN1))
 
-    def test__search_file_for_id_nonexisting_file(self):
+    def test_search_file_for_id_nonexisting_file(self):
         dut = DatanormBaseFile("Datanorm.123")
         self.assertIsNone(dut._search_file_for_id(GOOD_EAN_13))
 
-    def test__parse_line(self):
+    def test_parse_line(self):
         di = DatanormItem()
         self.assertFalse(di.is_valid)
 
@@ -180,10 +187,17 @@ class TestDatanormProductGroupFile(unittest.TestCase):
         this_package = import_module(".", package="tests")
         self.DATANORM_PATH = str(files(this_package).joinpath("datanorm_test.001"))
         self.DATANORM_WRG_PATH = str(files(this_package).joinpath("datanorm_test.WRG"))
-
         return super().setUp()
 
-    def test__search_file_for_id(self):
+    def test_file_name_is_valid_abs_path(self):
+        dut = DatanormProductGroupFile(self.DATANORM_WRG_PATH)
+        self.assertTrue(dut.file_name_is_valid())
+
+    def test_file_name_is_valid_rel_path(self):
+        dut = DatanormProductGroupFile('./data/Datanorm/DATANORM.WRG')
+        self.assertTrue(dut.file_name_is_valid())
+
+    def test_search_file_for_id(self):
         dut = DatanormProductGroupFile(self.DATANORM_WRG_PATH)
 
         expected_result = {
@@ -194,11 +208,11 @@ class TestDatanormProductGroupFile(unittest.TestCase):
         self.assertEqual(dut._search_file_for_group_ids("01", "12"), expected_result)
         self.assertIsNone(dut._search_file_for_group_ids("04", "12"))
 
-    def test__search_file_for_id_nonexisting_file(self):
+    def test_search_file_for_id_nonexisting_file(self):
         dut = DatanormProductGroupFile("Datanorm.wrg")
         self.assertIsNone(dut._search_file_for_group_ids("01", "12"))
 
-    def test__parse_line_separate_lines(self):
+    def test_parse_line_separate_lines(self):
         di = DatanormItem()
         di.main_product_group_id = "01"
         di.product_group_id = "12"
@@ -219,7 +233,7 @@ class TestDatanormProductGroupFile(unittest.TestCase):
         self.assertEqual(di.product_group_id, "12")
         self.assertEqual(di.product_group_name, "Sicherungsautomaten & Hauptschalter")
 
-    def test__parse_line_single_line(self):
+    def test_parse_line_single_line(self):
         di = DatanormItem()
         di.main_product_group_id = "02"
         di.product_group_id = "020101"
@@ -239,7 +253,7 @@ class TestDatanormProductGroupFile(unittest.TestCase):
         self.assertEqual(di.product_group_id, "020101")
         self.assertEqual(di.product_group_name, "Fernmeldekabel (Aussen /Innen)")
 
-    def test__parse_line_only_main_product_group(self):
+    def test_parse_line_only_main_product_group(self):
         di = DatanormItem()
         di.main_product_group_id = "03"
         di.product_group_id = ""
@@ -330,8 +344,16 @@ class TestDatanormPriceFile(unittest.TestCase):
         self.DATANORM_PATH = str(files(this_package).joinpath("datanorm_test.001"))
         self.DATPREIS_PATH = str(files(this_package).joinpath("datpreis_test.001"))
         return super().setUp()
+    
+    def test_file_name_is_valid_abs_path(self):
+        dut = DatanormPriceFile(self.DATPREIS_PATH)
+        self.assertTrue(dut.file_name_is_valid())
 
-    def test__search_file_for_article_id_over_single_line(self):
+    def test_file_name_is_valid_rel_path(self):
+        dut = DatanormPriceFile('./data/Datanorm/DATPREIS.999')
+        self.assertTrue(dut.file_name_is_valid())
+
+    def test_search_file_for_article_id_over_single_line(self):
         dut = DatanormPriceFile(self.DATPREIS_PATH)
         expected_result = {
             "V": "V 010199Firmenname                              DATANORM WARENGRP                                                          04EUR",  # noqa: E501
@@ -340,7 +362,7 @@ class TestDatanormPriceFile(unittest.TestCase):
         self.assertEqual(dut._search_file_for_article_id("996634"), expected_result)
         self.assertIsNone(dut._search_file_for_article_id("1234"))
 
-    def test__search_file_for_article_id_over_two_lines(self):
+    def test_search_file_for_article_id_over_two_lines(self):
         dut = DatanormPriceFile(self.DATPREIS_PATH)
         expected_result = {
             "V": "V 010199Firmenname                              DATANORM WARENGRP                                                          04EUR",  # noqa: E501
@@ -348,11 +370,11 @@ class TestDatanormPriceFile(unittest.TestCase):
         }
         self.assertEqual(dut._search_file_for_article_id("899977"), expected_result)
 
-    def test__search_file_for_id_nonexisting_file(self):
+    def test_search_file_for_id_nonexisting_file(self):
         dut = DatanormPriceFile("Datpreis.123")
         self.assertIsNone(dut._search_file_for_article_id("899977"))
 
-    def test__parse_line_separate_lines(self):
+    def test_parse_line_separate_lines(self):
         di = DatanormItem()
         di.article_id = "899977"
         dut = DatanormPriceFile("")
@@ -365,7 +387,7 @@ class TestDatanormPriceFile(unittest.TestCase):
         self.assertEqual(di.price_retail, Decimal("100.00"))
         self.assertEqual(di.price_wholesale, Decimal("90.00"))
 
-    def test__parse_line_single_line_rabattsatz(self):
+    def test_parse_line_single_line_rabattsatz(self):
         di = DatanormItem()
         di.article_id = "996634"
         dut = DatanormPriceFile("")
@@ -378,7 +400,7 @@ class TestDatanormPriceFile(unittest.TestCase):
         self.assertEqual(di.price_retail, Decimal("129.20"))
         self.assertEqual(di.price_wholesale, Decimal("44.34"))
 
-    def test__parse_line_single_line_only_wholesale(self):
+    def test_parse_line_single_line_only_wholesale(self):
         di = DatanormItem()
         di.article_id = "996834"
         di.price_retail = Decimal("70.00")
