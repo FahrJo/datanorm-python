@@ -21,7 +21,7 @@ Support for writing/updating Datanorm files is possible, but not yet implemented
 
 ## Installation
 
-The InvenTree python library can be easily installed using PIP:
+The DATANORM python library can be easily installed using PIP:
 
 ```bash
 pip install datanorm
